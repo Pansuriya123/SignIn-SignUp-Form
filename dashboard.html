@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Language Translator</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>SignBridge</h2>
+            </div>
+            <ul class="nav-links">
+                <li class="active">
+                    <a href="#dashboard"><i class="fas fa-home"></i>Dashboard</a>
+                </li>
+                <li>
+                    <a href="#translate"><i class="fas fa-language"></i>Translate</a>
+                </li>
+                <li>
+                    <a href="#realtime"><i class="fas fa-camera"></i>Real-time</a>
+                </li>
+                <li>
+                    <a href="#history"><i class="fas fa-history"></i>History</a>
+                </li>
+                <li>
+                    <a href="#profile"><i class="fas fa-user"></i>Profile</a>
+                </li>
+                <li>
+                    <a href="#settings"><i class="fas fa-cog"></i>Settings</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search translation history...">
+                </div>
+                <div class="header-actions">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">2</span>
+                    </button>
+                    <button class="profile-btn" id="profileBtn">
+                        <img src="img/avatar.svg" alt="Profile" id="profileImage">
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Quick Actions -->
+                <section class="quick-actions">
+                    <h2>Quick Actions</h2>
+                    <div class="action-cards">
+                        <div class="action-card">
+                            <div class="action-info">
+                                <h3>Speech to Sign</h3>
+                                <p>Convert spoken words to sign language</p>
+                            </div>
+                            <button class="action-btn"><i class="fas fa-microphone"></i></button>
+                        </div>
+                        <div class="action-card">
+                            <div class="action-info">
+                                <h3>Sign to Text</h3>
+                                <p>Convert sign language to text</p>
+                            </div>
+                            <button class="action-btn"><i class="fas fa-camera"></i></button>
+                        </div>
+                        <div class="action-card">
+                            <div class="action-info">
+                                <h3>Text to Sign</h3>
+                                <p>Convert written text to sign language</p>
+                            </div>
+                            <button class="action-btn"><i class="fas fa-keyboard"></i></button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Recent Activity -->
+                <section class="recent-activity">
+                    <div class="section-header">
+                        <h2>Recent Activity</h2>
+                        <a href="#history" class="view-all">View All</a>
+                    </div>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon speech-to-sign">
+                                <i class="fas fa-microphone"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h3>Speech to Sign Translation</h3>
+                                <p>Converted 2 minutes of speech</p>
+                                <span class="activity-time">2 minutes ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon sign-to-text">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h3>Sign to Text Translation</h3>
+                                <p>Translated 5 sign language gestures</p>
+                                <span class="activity-time">15 minutes ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Profile Section -->
+                <section class="profile-section" id="profileSection" style="display: none;">
+                    <div class="section-header">
+                        <h2>Profile Settings</h2>
+                        <button class="save-profile-btn">Save Changes</button>
+                    </div>
+                    <div class="profile-content">
+                        <div class="profile-image-section">
+                            <div class="profile-image-container">
+                                <img src="img/avatar.svg" alt="Profile Picture" id="previewImage">
+                                <div class="image-upload">
+                                    <label for="profileImageInput">
+                                        <i class="fas fa-camera"></i>
+                                    </label>
+                                    <input type="file" id="profileImageInput" accept="image/*">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-details">
+                            <div class="profile-form">
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" id="fullName" placeholder="Enter your full name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" id="email" placeholder="Enter your email">
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone Number</label>
+                                    <input type="tel" id="phone" placeholder="Enter your phone number">
+                                </div>
+                                <div class="form-group">
+                                    <label>Preferred Language</label>
+                                    <select id="language">
+                                        <option value="en">English</option>
+                                        <option value="hi">Hindi</option>
+                                        <option value="gu">Gujarati</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Bio</label>
+                                    <textarea id="bio" placeholder="Tell us about yourself"></textarea>
+                                </div>
+                            </div>
+                            <div class="profile-preferences">
+                                <h3>Preferences</h3>
+                                <div class="preference-item">
+                                    <label>
+                                        <input type="checkbox" id="emailNotifications">
+                                        Email Notifications
+                                    </label>
+                                </div>
+                                <div class="preference-item">
+                                    <label>
+                                        <input type="checkbox" id="darkMode">
+                                        Dark Mode
+                                    </label>
+                                </div>
+                                <div class="preference-item">
+                                    <label>
+                                        <input type="checkbox" id="autoTranslate">
+                                        Auto-translate
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+</html> 

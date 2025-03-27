@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="600px" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <!-- Background Circle -->
+        <circle fill="#ECF0F1" cx="400" cy="300" r="250"/>
+        
+        <!-- Hand Shape -->
+        <path d="M350,200 C350,180 360,160 380,150 C400,140 420,145 430,160 C440,175 445,190 445,210 L445,300 C445,320 435,340 415,350 C395,360 375,355 365,340 C355,325 350,310 350,290 L350,200 Z" 
+              fill="#FF6B6B"/>
+        
+        <!-- Fingers -->
+        <path d="M380,150 L380,100 C380,90 385,80 395,75 C405,70 415,72 420,80 C425,88 427,95 427,105 L427,150" 
+              stroke="#4ECDC4" stroke-width="15" stroke-linecap="round"/>
+        <path d="M410,150 L410,120 C410,110 415,100 425,95 C435,90 445,92 450,100 C455,108 457,115 457,125 L457,150" 
+              stroke="#4ECDC4" stroke-width="15" stroke-linecap="round"/>
+        <path d="M440,160 L440,140 C440,130 445,120 455,115 C465,110 475,112 480,120 C485,128 487,135 487,145 L487,160" 
+              stroke="#4ECDC4" stroke-width="15" stroke-linecap="round"/>
+        
+        <!-- Motion Lines -->
+        <path d="M500,250 C520,260 530,280 530,300 C530,320 520,340 500,350" 
+              stroke="#2C3E50" stroke-width="8" stroke-linecap="round" stroke-dasharray="15,10"/>
+        <path d="M520,230 C540,240 550,260 550,280 C550,300 540,320 520,330" 
+              stroke="#2C3E50" stroke-width="8" stroke-linecap="round" stroke-dasharray="15,10"/>
+    </g>
+</svg> 

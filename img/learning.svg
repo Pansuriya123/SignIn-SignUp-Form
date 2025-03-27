@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="600px" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <!-- Background Elements -->
+        <circle fill="#ECF0F1" cx="400" cy="300" r="250"/>
+        
+        <!-- Book Stack -->
+        <rect fill="#FF6B6B" x="300" y="350" width="200" height="30" rx="5"/>
+        <rect fill="#4ECDC4" x="320" y="320" width="200" height="30" rx="5"/>
+        <rect fill="#45B7AF" x="280" y="380" width="200" height="30" rx="5"/>
+        
+        <!-- Learning Symbols -->
+        <circle fill="#2C3E50" cx="400" cy="200" r="60"/>
+        <path d="M370,180 L430,180 M400,150 L400,250" 
+              stroke="#FFFFFF" stroke-width="15" stroke-linecap="round"/>
+        
+        <!-- Floating Elements -->
+        <circle fill="#FF6B6B" cx="500" cy="150" r="20"/>
+        <circle fill="#4ECDC4" cx="300" cy="180" r="15"/>
+        <circle fill="#45B7AF" cx="480" cy="250" r="25"/>
+        
+        <!-- Connection Lines -->
+        <path d="M320,180 C350,160 380,150 400,150" 
+              stroke="#2C3E50" stroke-width="3" stroke-dasharray="5,5"/>
+        <path d="M480,250 C450,230 420,220 400,220" 
+              stroke="#2C3E50" stroke-width="3" stroke-dasharray="5,5"/>
+        <path d="M500,150 C470,170 440,180 400,180" 
+              stroke="#2C3E50" stroke-width="3" stroke-dasharray="5,5"/>
+    </g>
+</svg> 

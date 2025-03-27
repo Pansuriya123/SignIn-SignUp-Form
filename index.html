@@ -3,104 +3,147 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SignIn&SignUp</title>
+    <title>ISL Learning Platform</title>
     <link rel="stylesheet" type="text/css" href="./style.css" />
     <script
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
     ></script>
-  
   </head>
   <body>
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="" class="sign-in-form">
-            <h2 class="title">Sign In</h2>
+          <form action="" class="sign-in-form" id="signInForm" novalidate>
+            <h2 class="title">Welcome Back</h2>
+            <p class="subtitle">Continue your ISL learning journey</p>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input 
+                type="email" 
+                placeholder="Email Address" 
+                id="signInEmail"
+                required 
+              />
+              <small class="error-message"></small>
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input 
+                type="password" 
+                placeholder="Password" 
+                id="signInPassword"
+                required 
+                minlength="8"
+              />
+              <small class="error-message"></small>
             </div>
-            <input type="submit" value="Login" class="btn solid" />
-
-            <p class="social-text">Or Sign in with social platforms</p>
-            <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
+            <div class="remember-forgot">
+              <label><input type="checkbox"> Remember me</label>
+              <a href="#" class="forgot-link">Forgot Password?</a>
             </div>
+            <input type="submit" value="Sign In" class="btn solid" />
           </form>
 
-
-          <form action="" class="sign-up-form">
-            <h2 class="title">Sign Up</h2>
+          <form action="" class="sign-up-form" id="signUpForm" novalidate>
+            <h2 class="title">Join ISL Community</h2>
+            <p class="subtitle">Begin your sign language journey today</p>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input 
+                type="text" 
+                placeholder="Full Name" 
+                id="fullName"
+                required 
+                minlength="3"
+                pattern="^[A-Za-z\s]+$"
+              />
+              <small class="error-message"></small>
             </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
+              <input 
+                type="email" 
+                placeholder="Email Address" 
+                id="email"
+                required 
+              />
+              <small class="error-message"></small>
+            </div>
+            <div class="verification-section" style="display: none;">
+              <div class="input-field">
+                <i class="fas fa-check-circle"></i>
+                <input 
+                  type="text" 
+                  placeholder="Enter Verification Code" 
+                  id="verificationCode"
+                  pattern="[0-9]{6}"
+                  required
+                />
+                <small class="error-message"></small>
+              </div>
+              <div class="verify-actions">
+                <button type="button" class="btn verify-btn" id="verifyCodeBtn">Verify Code</button>
+                <button type="button" class="btn resend-btn" id="resendCodeBtn">Resend Code</button>
+              </div>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-phone"></i>
+              <input 
+                type="tel" 
+                placeholder="Phone Number (e.g., 9876543210)" 
+                id="phone"
+                required 
+                pattern="^[6-9]\d{9}$"
+              />
+              <small class="error-message"></small>
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input 
+                type="password" 
+                placeholder="Create Password" 
+                id="password"
+                required 
+                minlength="8"
+              />
+              <small class="error-message"></small>
             </div>
-            <input type="submit" value="Sign Up" class="btn solid" />
-
-            <p class="social-text">Or Sign up with social platforms</p>
-            <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
+            <div class="password-requirements">
+              <small>Password must contain:</small>
+              <ul>
+                <li id="length">At least 8 characters</li>
+                <li id="uppercase">One uppercase letter</li>
+                <li id="lowercase">One lowercase letter</li>
+                <li id="number">One number</li>
+                <li id="special">One special character</li>
+              </ul>
             </div>
+            <button type="button" class="btn solid" id="sendVerificationBtn">Send Verification Code</button>
+            <input type="submit" value="Join Now" class="btn solid" id="signUpSubmit" style="display: none;" />
           </form>
         </div>
       </div>
       <div class="panels-container">
-
         <div class="panel left-panel">
-            <div class="content">
-                <h3>New here?</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio minus natus est.</p>
-                <button class="btn transparent" id="sign-up-btn">Sign Up</button>
-            </div>
-            <img src="./img/log.svg" class="image" alt="">
+          <div class="content">
+            <h3>New to ISL?</h3>
+            <p>Join our community and learn Indian Sign Language through interactive lessons, real-time practice, and expert guidance.</p>
+            <button class="btn transparent" id="sign-up-btn">Get Started</button>
+          </div>
+          <img src="./img/sign-language.svg" class="image" alt="Sign Language Illustration">
         </div>
 
         <div class="panel right-panel">
-            <div class="content">
-                <h3>One of us?</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio minus natus est.</p>
-                <button class="btn transparent" id="sign-in-btn">Sign In</button>
-            </div>
-            <img src="./img/register.svg" class="image" alt="">
+          <div class="content">
+            <h3>Already Learning?</h3>
+            <p>Sign in to continue your progress, practice with our AI-powered tools, and connect with the ISL community.</p>
+            <button class="btn transparent" id="sign-in-btn">Sign In</button>
+          </div>
+          <img src="./img/learning.svg" class="image" alt="Learning Illustration">
         </div>
       </div>
     </div>
-
     <script src="./app.js"></script>
   </body>
 </html>

@@ -1,5 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 
+:root {
+  --primary-color: #FF6B6B;
+  --secondary-color: #4ECDC4;
+  --accent-color: #45B7AF;
+  --text-color: #2C3E50;
+  --light-text: #95A5A6;
+  --background: #ECF0F1;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -9,12 +18,13 @@
 body,
 input {
   font-family: "Poppins", sans-serif;
+  color: var(--text-color);
 }
 
 .container {
   position: relative;
   width: 100%;
-  background-color: #fff;
+  background-color: var(--background);
   min-height: 100vh;
   overflow: hidden;
 }
@@ -62,27 +72,35 @@ form.sign-in-form {
 
 .title {
   font-size: 2.2rem;
-  color: #444;
+  color: var(--text-color);
   margin-bottom: 10px;
+  text-align: center;
+}
+
+.subtitle {
+  color: var(--light-text);
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .input-field {
   max-width: 380px;
   width: 100%;
-  background-color: #f0f0f0;
-  margin: 10px 0;
+  background-color: #fff;
+  margin: 15px 0;
   height: 55px;
-  border-radius: 55px;
+  border-radius: 12px;
   display: grid;
   grid-template-columns: 15% 85%;
   padding: 0 0.4rem;
   position: relative;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .input-field i {
   text-align: center;
   line-height: 55px;
-  color: #acacac;
+  color: var(--primary-color);
   transition: 0.5s;
   font-size: 1.1rem;
 }
@@ -92,13 +110,37 @@ form.sign-in-form {
   outline: none;
   border: none;
   line-height: 1;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1.1rem;
-  color: #333;
+  color: var(--text-color);
+  padding: 0 15px;
 }
 
 .input-field input::placeholder {
-  color: #aaa;
+  color: var(--light-text);
+  font-weight: 400;
+}
+
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 380px;
+  margin: 15px 0;
+  font-size: 0.9rem;
+}
+
+.remember-forgot label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-color);
+}
+
+.forgot-link {
+  color: var(--primary-color);
+  text-decoration: none;
   font-weight: 500;
 }
 
@@ -134,22 +176,34 @@ form.sign-in-form {
 
 .btn {
   width: 150px;
-  background-color: #5995fd;
+  background-color: var(--primary-color);
   border: none;
   outline: none;
   height: 49px;
-  border-radius: 49px;
+  border-radius: 12px;
   color: #fff;
   text-transform: uppercase;
   font-weight: 600;
-  margin: 10px 0;
+  margin: 20px 0;
   cursor: pointer;
   transition: 0.5s;
 }
 
 .btn:hover {
-  background-color: #4d84e2;
+  background-color: var(--accent-color);
 }
+
+.btn.transparent {
+  margin: 0;
+  background: none;
+  border: 2px solid #fff;
+  width: 130px;
+  height: 41px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  border-radius: 12px;
+}
+
 .panels-container {
   position: absolute;
   height: 100%;
@@ -168,7 +222,7 @@ form.sign-in-form {
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
-  background-image: linear-gradient(-45deg, #4481eb 0%, #04befe 100%);
+  background-image: linear-gradient(-45deg, var(--primary-color) 0%, var(--secondary-color) 100%);
   transition: 1.8s ease-in-out;
   border-radius: 50%;
   z-index: 6;
@@ -214,16 +268,6 @@ form.sign-in-form {
 .panel p {
   font-size: 0.95rem;
   padding: 0.7rem 0;
-}
-
-.btn.transparent {
-  margin: 0;
-  background: none;
-  border: 2px solid #fff;
-  width: 130px;
-  height: 41px;
-  font-weight: 600;
-  font-size: 0.8rem;
 }
 
 .right-panel .image,
@@ -397,4 +441,107 @@ form.sign-in-form {
     bottom: 28%;
     left: 50%;
   }
+}
+
+.verification-section {
+  width: 100%;
+  max-width: 380px;
+  margin: 15px 0;
+}
+
+.verify-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.verify-btn, .resend-btn {
+  flex: 1;
+  padding: 0 15px;
+  font-size: 0.9rem;
+}
+
+.verify-btn {
+  background-color: var(--secondary-color);
+}
+
+.verify-btn:hover {
+  background-color: var(--accent-color);
+}
+
+.resend-btn {
+  background-color: var(--light-text);
+}
+
+.resend-btn:hover {
+  background-color: var(--text-color);
+}
+
+.verification-section .input-field i {
+  color: var(--secondary-color);
+}
+
+.error-message {
+  color: #ff4757;
+  font-size: 0.8rem;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  display: none;
+}
+
+.input-field.error .error-message {
+  display: block;
+}
+
+.input-field.error input {
+  border: 1px solid #ff4757;
+}
+
+.input-field.valid input {
+  border: 1px solid #2ecc71;
+}
+
+.password-requirements {
+  width: 100%;
+  max-width: 380px;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+}
+
+.password-requirements small {
+  color: var(--text-color);
+  font-size: 0.8rem;
+}
+
+.password-requirements ul {
+  list-style: none;
+  padding: 5px 0;
+  margin: 0;
+}
+
+.password-requirements li {
+  color: var(--light-text);
+  font-size: 0.75rem;
+  margin: 5px 0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.password-requirements li::before {
+  content: "×";
+  position: absolute;
+  left: 0;
+  color: #ff4757;
+}
+
+.password-requirements li.valid {
+  color: var(--text-color);
+}
+
+.password-requirements li.valid::before {
+  content: "✓";
+  color: #2ecc71;
 }
