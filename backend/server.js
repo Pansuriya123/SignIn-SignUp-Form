@@ -11,28 +11,13 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors({
-  origin: ['http://localhost:3000', 'http://127.0.0.1:3000', 'http://localhost:5001', 'http://127.0.0.1:5001'],
-  credentials: true
-}));
+app.use(cors());
 app.use(express.json());
 
-// MongoDB Connection with retry logic
-const connectDB = async () => {
-  try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log('Connected to MongoDB Atlas');
-  } catch (error) {
-    console.error('MongoDB connection error:', error);
-    // Retry connection after 5 seconds
-    setTimeout(connectDB, 5000);
-  }
-};
-
-connectDB();
+// MongoDB Connection
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log('Connected to MongoDB Atlas'))
+  .catch((err) => console.error('MongoDB connection error:', err));
 
 // User Schema
 const userSchema = new mongoose.Schema({
@@ -43,19 +28,6 @@ const userSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-// Remove any existing indexes
-mongoose.connection.once('open', async () => {
-  try {
-    await mongoose.connection.db.collection('users').dropIndexes();
-    console.log('Dropped existing indexes');
-  } catch (error) {
-    console.log('No existing indexes to drop');
-  }
-});
-
-// Create new indexes
-userSchema.index({ email: 1 }, { unique: true });
-
 const User = mongoose.model('User', userSchema);
 
 // Routes
@@ -63,10 +35,6 @@ const User = mongoose.model('User', userSchema);
 app.post('/api/register', async (req, res) => {
   try {
     const { fullName, email, phone, password } = req.body;
-
-    if (!fullName || !email || !phone || !password) {
-      return res.status(400).json({ message: 'All fields are required' });
-    }
 
     // Check if user already exists
     const existingUser = await User.findOne({ email });
@@ -87,14 +55,9 @@ app.post('/api/register', async (req, res) => {
     });
 
     await user.save();
-    console.log('User registered successfully:', { email, fullName });
     res.status(201).json({ message: 'Registration successful' });
   } catch (error) {
-    console.error('Registration error:', error);
-    res.status(500).json({ 
-      message: 'Server error during registration', 
-      error: error.message 
-    });
+    res.status(500).json({ message: 'Server error', error: error.message });
   }
 });
 
